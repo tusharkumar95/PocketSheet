@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+  <meta name="theme-color" content="#f5f4ef" />
+  <title>PocketSheet</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">POCKETSHEET</p>
+        <h1 id="sheetTitle">My Sheet</h1>
+      </div>
+      <button class="icon-btn" id="moreBtn" aria-label="More">•••</button>
+    </header>
+
+    <section class="sheet-wrap">
+      <div class="sheet" id="sheet"></div>
+    </section>
+
+    <section class="cell-panel" id="cellPanel">
+      <div>
+        <p class="cell-ref" id="cellRef">No cell selected</p>
+        <p class="cell-value" id="cellValue">Tap a cell to edit</p>
+      </div>
+      <button id="editBtn" class="small-btn" disabled>Edit</button>
+    </section>
+
+    <nav class="bottom-bar">
+      <button id="addRowBtn"><span>＋</span>Add row</button>
+      <button id="formulaBtn" disabled><span>ƒx</span>Formula</button>
+      <button id="formatBtn" disabled><span>Aa</span>Format</button>
+      <button id="undoBtn" disabled><span>↶</span>Undo</button>
+    </nav>
+  </main>
+
+  <div class="editor-backdrop hidden" id="editorBackdrop">
+    <div class="editor-sheet">
+      <div class="grabber"></div>
+      <div class="editor-head">
+        <div>
+          <p class="eyebrow">EDIT CELL</p>
+          <h2 id="editorCellRef">A1</h2>
+        </div>
+        <button class="icon-btn" id="closeEditor">✕</button>
+      </div>
+      <input id="cellInput" autocomplete="off" inputmode="text" placeholder="Enter value" />
+      <button class="primary-btn" id="saveCellBtn">Save</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f5f4ef" />
   <title>PocketSheet</title>
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=2" />
 </head>
 <body>
   <main class="app">
@@ -18,6 +18,14 @@
       <button class="icon-btn" id="moreBtn" aria-label="More">•••</button>
     </header>
 
+    <div class="pick-banner hidden" id="pickBanner">
+      <div>
+        <strong id="pickTitle">Pick a cell</strong>
+        <span id="pickHint">Tap any cell in the sheet</span>
+      </div>
+      <button id="cancelPickBtn">Cancel</button>
+    </div>
+
     <section class="sheet-wrap">
       <div class="sheet" id="sheet"></div>
     </section>
@@ -26,6 +34,7 @@
       <div>
         <p class="cell-ref" id="cellRef">No cell selected</p>
         <p class="cell-value" id="cellValue">Tap a cell to edit</p>
+        <p class="cell-formula hidden" id="cellFormula"></p>
       </div>
       <button id="editBtn" class="small-btn" disabled>Edit</button>
     </section>
@@ -46,13 +55,56 @@
           <p class="eyebrow">EDIT CELL</p>
           <h2 id="editorCellRef">A1</h2>
         </div>
-        <button class="icon-btn" id="closeEditor">✕</button>
+        <button class="icon-btn" id="closeEditor" aria-label="Close">✕</button>
       </div>
       <input id="cellInput" autocomplete="off" inputmode="text" placeholder="Enter value" />
       <button class="primary-btn" id="saveCellBtn">Save</button>
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <div class="editor-backdrop hidden" id="formulaBackdrop">
+    <div class="editor-sheet formula-sheet">
+      <div class="grabber"></div>
+      <div class="editor-head">
+        <div>
+          <p class="eyebrow">FORMULA BUILDER</p>
+          <h2 id="formulaTarget">Result in D2</h2>
+        </div>
+        <button class="icon-btn" id="closeFormula" aria-label="Close">✕</button>
+      </div>
+
+      <p class="formula-help">Build the calculation by tapping cells instead of typing a formula.</p>
+
+      <div class="formula-row">
+        <button class="operand-card" id="leftOperandBtn">
+          <span class="operand-label">FIRST VALUE</span>
+          <strong id="leftOperandText">Pick a cell</strong>
+          <small id="leftOperandValue">Tap to choose</small>
+        </button>
+
+        <div class="operator-picker" id="operatorPicker" aria-label="Choose operator">
+          <button data-op="+" class="operator-btn selected">＋</button>
+          <button data-op="-" class="operator-btn">−</button>
+          <button data-op="*" class="operator-btn">×</button>
+          <button data-op="/" class="operator-btn">÷</button>
+        </div>
+
+        <button class="operand-card" id="rightOperandBtn">
+          <span class="operand-label">SECOND VALUE</span>
+          <strong id="rightOperandText">Pick a cell</strong>
+          <small id="rightOperandValue">Tap to choose</small>
+        </button>
+      </div>
+
+      <div class="formula-preview">
+        <span>Preview</span>
+        <strong id="formulaPreview">Pick two cells</strong>
+      </div>
+
+      <button class="primary-btn" id="applyFormulaBtn" disabled>Apply formula</button>
+    </div>
+  </div>
+
+  <script src="app.js?v=2"></script>
 </body>
 </html>

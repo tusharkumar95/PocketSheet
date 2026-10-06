@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f5f4ef" />
   <title>PocketSheet</title>
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
 <body>
   <main class="app">
@@ -73,11 +73,18 @@
         <button class="icon-btn" id="closeFormula" aria-label="Close">✕</button>
       </div>
 
-      <p class="formula-help">Build the calculation by tapping cells instead of typing a formula.</p>
+      <div class="formula-mode-picker" id="formulaModePicker">
+        <button data-mode="arithmetic" class="mode-btn selected"><span>＋−</span>Calculate</button>
+        <button data-mode="sum" class="mode-btn"><span>Σ</span>Total</button>
+        <button data-mode="average" class="mode-btn"><span>Avg</span>Average</button>
+        <button data-mode="count" class="mode-btn"><span>#</span>Count</button>
+      </div>
+
+      <p class="formula-help" id="formulaHelp">Build the calculation by tapping cells instead of typing a formula.</p>
 
       <div class="formula-row">
         <button class="operand-card" id="leftOperandBtn">
-          <span class="operand-label">FIRST VALUE</span>
+          <span class="operand-label" id="leftOperandLabel">FIRST VALUE</span>
           <strong id="leftOperandText">Pick a cell</strong>
           <small id="leftOperandValue">Tap to choose</small>
         </button>
@@ -90,7 +97,7 @@
         </div>
 
         <button class="operand-card" id="rightOperandBtn">
-          <span class="operand-label">SECOND VALUE</span>
+          <span class="operand-label" id="rightOperandLabel">SECOND VALUE</span>
           <strong id="rightOperandText">Pick a cell</strong>
           <small id="rightOperandValue">Tap to choose</small>
         </button>
@@ -102,9 +109,10 @@
       </div>
 
       <button class="primary-btn" id="applyFormulaBtn" disabled>Apply formula</button>
+      <button class="secondary-btn hidden" id="fillDownBtn">Fill down from this cell</button>
     </div>
   </div>
 
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

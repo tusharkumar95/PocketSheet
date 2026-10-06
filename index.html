@@ -7,6 +7,7 @@
   <title>PocketSheet</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="data.css?v=4" />
 </head>
 <body>
   <main class="app">
@@ -17,6 +18,14 @@
       </div>
       <button class="icon-btn" id="moreBtn" aria-label="More">•••</button>
     </header>
+
+    <div class="view-banner hidden" id="viewBanner">
+      <div>
+        <strong id="viewTitle">Filtered view</strong>
+        <span id="viewDetail"></span>
+      </div>
+      <button id="clearViewBtn">Clear</button>
+    </div>
 
     <div class="pick-banner hidden" id="pickBanner">
       <div>
@@ -42,7 +51,7 @@
     <nav class="bottom-bar">
       <button id="addRowBtn"><span>＋</span>Add row</button>
       <button id="formulaBtn" disabled><span>ƒx</span>Formula</button>
-      <button id="formatBtn" disabled><span>Aa</span>Format</button>
+      <button id="dataBtn" disabled><span>⇅</span>Data</button>
       <button id="undoBtn" disabled><span>↶</span>Undo</button>
     </nav>
   </main>
@@ -113,6 +122,45 @@
     </div>
   </div>
 
+  <div class="editor-backdrop hidden" id="dataBackdrop">
+    <div class="editor-sheet data-sheet">
+      <div class="grabber"></div>
+      <div class="editor-head">
+        <div>
+          <p class="eyebrow">DATA</p>
+          <h2 id="dataTitle">Column B</h2>
+          <p class="data-subtitle" id="dataSubtitle">Cost</p>
+        </div>
+        <button class="icon-btn" id="closeData" aria-label="Close">✕</button>
+      </div>
+
+      <section class="data-section">
+        <p class="data-label">SORT</p>
+        <div class="sort-grid" id="sortGrid">
+          <button data-sort="asc" class="data-choice"><span>↑</span><strong>Low → High</strong><small>A → Z for text</small></button>
+          <button data-sort="desc" class="data-choice"><span>↓</span><strong>High → Low</strong><small>Z → A for text</small></button>
+        </div>
+        <button class="data-clear" id="clearSortBtn">Clear sort</button>
+      </section>
+
+      <section class="data-section">
+        <p class="data-label">FILTER</p>
+        <div class="filter-op-grid" id="filterOpGrid">
+          <button data-filter-op="equals" class="filter-op selected">Equals</button>
+          <button data-filter-op="contains" class="filter-op">Contains</button>
+          <button data-filter-op="gt" class="filter-op">Greater than</button>
+          <button data-filter-op="lt" class="filter-op">Less than</button>
+        </div>
+        <input id="filterValue" class="data-input" autocomplete="off" placeholder="Enter value" />
+        <button class="primary-btn" id="applyFilterBtn">Apply filter</button>
+        <button class="data-clear" id="clearFilterBtn">Clear filter</button>
+      </section>
+
+      <p class="data-note">Sorting and filtering only change this view. Your stored cells and formulas stay in their original rows.</p>
+    </div>
+  </div>
+
   <script src="app.js?v=3"></script>
+  <script src="data.js?v=4"></script>
 </body>
 </html>

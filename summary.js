@@ -175,9 +175,3 @@ function psRenderSummaryResults(built) {
     list.appendChild(row);
   });
 }
-
-const psRenderSheetBeforeSummary = renderSheet;
-renderSheet = function renderSheetWithSummaryRefresh() {
-  psRenderSheetBeforeSummary();
-  if (typeof psActiveView !== "undefined" && psActiveView === "summary") psRenderSummaryView();
-};

@@ -2,7 +2,8 @@ const psViewSwitcher = document.createElement("div");
 psViewSwitcher.className = "view-switcher";
 psViewSwitcher.innerHTML = `
   <button type="button" id="gridViewBtn" class="active">Grid</button>
-  <button type="button" id="rowViewBtn">Rows</button>`;
+  <button type="button" id="rowViewBtn">Rows</button>
+  <button type="button" id="summaryViewBtn">Summary</button>`;
 
 document.querySelector(".topbar").insertAdjacentElement("afterend", psViewSwitcher);
 
@@ -13,6 +14,7 @@ document.querySelector(".sheet-wrap").insertAdjacentElement("beforebegin", psRow
 
 const psGridViewBtn = document.getElementById("gridViewBtn");
 const psRowViewBtn = document.getElementById("rowViewBtn");
+const psSummaryViewBtn = document.getElementById("summaryViewBtn");
 let psActiveView = "grid";
 let psRowCursor = 0;
 
@@ -139,12 +141,16 @@ function psEscapeHtml(text) {
 }
 
 function psSetView(view) {
-  psActiveView = view === "rows" ? "rows" : "grid";
+  psActiveView = ["grid", "rows", "summary"].includes(view) ? view : "grid";
   const isRows = psActiveView === "rows";
+  const isSummary = psActiveView === "summary";
   document.body.classList.toggle("row-mode", isRows);
-  psGridViewBtn.classList.toggle("active", !isRows);
+  document.body.classList.toggle("summary-mode", isSummary);
+  psGridViewBtn.classList.toggle("active", psActiveView === "grid");
   psRowViewBtn.classList.toggle("active", isRows);
+  psSummaryViewBtn.classList.toggle("active", isSummary);
   if (isRows) psRenderRowView();
+  else if (isSummary && typeof psRenderSummaryView === "function") psRenderSummaryView();
   else renderSheet();
 }
 
@@ -169,12 +175,14 @@ selectCell = function selectCellWithRowView(ref) {
     }
     psRenderRowView();
   }
+  if (psActiveView === "summary" && typeof psRenderSummaryView === "function") psRenderSummaryView();
 };
 
 const psRenderSheetBeforeRowView = renderSheet;
 renderSheet = function renderSheetWithRowViewRefresh() {
   psRenderSheetBeforeRowView();
   if (psActiveView === "rows") psRenderRowView();
+  if (psActiveView === "summary" && typeof psRenderSummaryView === "function") psRenderSummaryView();
 };
 
 if (typeof clearEntireView === "function") {
@@ -183,10 +191,12 @@ if (typeof clearEntireView === "function") {
     psClearEntireViewBeforeRowView();
     psRowCursor = 0;
     if (psActiveView === "rows") psRenderRowView();
+    if (psActiveView === "summary" && typeof psRenderSummaryView === "function") psRenderSummaryView();
   };
 }
 
 psGridViewBtn.addEventListener("click", () => psSetView("grid"));
 psRowViewBtn.addEventListener("click", () => psSetView("rows"));
+psSummaryViewBtn.addEventListener("click", () => psSetView("summary"));
 
 psSetView("grid");

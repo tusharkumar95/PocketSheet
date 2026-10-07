@@ -1,3 +1,15 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.sheet-wrap,
+.row-view {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
 .view-switcher {
   margin: 0 12px 10px;
   padding: 4px;

@@ -1,0 +1,84 @@
+.sheet-tabs {
+  margin: 0 12px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.sheet-tabs::-webkit-scrollbar { display: none; }
+.sheet-tab {
+  flex: 0 0 auto;
+  min-height: 34px;
+  max-width: 150px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: rgba(255,255,255,.58);
+  color: var(--muted);
+  padding: 0 11px;
+  font-size: 11px;
+  font-weight: 750;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sheet-tab.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: #7e3f2d;
+}
+.sheet-add-tab {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: white;
+  color: var(--text);
+  font-size: 18px;
+}
+.sheet-add-tab:disabled { opacity: .35; }
+
+.workbook-action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+.workbook-action-grid button {
+  min-height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  color: var(--text);
+  padding: 6px;
+  font-size: 10px;
+  font-weight: 750;
+}
+.workbook-action-grid button.danger { color: #a33d2b; }
+.workbook-action-grid button:disabled { opacity: .35; }
+
+.template-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+.template-card {
+  min-height: 67px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: white;
+  color: var(--text);
+  padding: 10px;
+  text-align: left;
+}
+.template-card strong,
+.template-card small { display: block; }
+.template-card strong { font-size: 12px; }
+.template-card small { margin-top: 3px; color: var(--muted); font-size: 10px; line-height: 1.25; }
+.workbook-note { margin: 8px 1px 0; color: var(--muted); font-size: 10px; line-height: 1.35; }
+
+@media (max-width: 380px) {
+  .sheet-tabs { margin-left: 10px; margin-right: 10px; }
+  .sheet-tab { max-width: 125px; padding: 0 9px; }
+}

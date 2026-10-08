@@ -1,0 +1,114 @@
+.topbar {
+  padding: 10px 12px 6px;
+}
+.topbar h1 {
+  font-size: 18px;
+  letter-spacing: -.02em;
+}
+.topbar .eyebrow {
+  margin-bottom: 1px;
+  font-size: 8px;
+  letter-spacing: .14em;
+}
+.topbar .icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+}
+
+.bottom-bar {
+  margin: 0 10px 8px;
+  padding: 4px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255,255,255,.62);
+  box-shadow: 0 2px 10px rgba(44,42,35,.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.bottom-bar button {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 4px;
+  font-size: 10px;
+  border-radius: 10px;
+}
+.bottom-bar button span {
+  display: inline;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1;
+}
+.bottom-bar button:active {
+  background: rgba(0,0,0,.05);
+}
+
+.view-switcher {
+  margin: 0 12px 8px;
+}
+.view-switcher button {
+  min-height: 34px;
+}
+
+.operand-source-wrap {
+  display: grid;
+  gap: 7px;
+}
+.operand-source-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--header);
+}
+.operand-source-toggle button {
+  min-height: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 750;
+}
+.operand-source-toggle button.selected {
+  background: white;
+  color: var(--text);
+  box-shadow: 0 1px 5px rgba(44,42,35,.08);
+}
+.manual-number-input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  color: var(--text);
+  padding: 0 12px;
+  font-size: 17px;
+  outline: none;
+}
+.manual-number-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.operand-card.number-operand {
+  border-color: var(--accent);
+  background: #fffaf8;
+}
+.manual-controls-hidden .operand-source-toggle,
+.manual-controls-hidden .manual-number-input {
+  display: none !important;
+}
+
+@media (max-width: 380px) {
+  .topbar h1 { font-size: 17px; }
+  .bottom-bar button { font-size: 9px; gap: 3px; }
+  .bottom-bar button span { font-size: 15px; }
+}

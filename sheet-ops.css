@@ -84,7 +84,8 @@
   top: 0;
   z-index: 8;
 }
-.sheet.freeze-header .cell[data-ref$="1"] {
+.sheet.freeze-header .cell.frozen-row-one,
+.sheet.freeze-header .cell.frozen-row-one-header {
   position: sticky;
   top: 38px;
   z-index: 6;
@@ -96,14 +97,15 @@
   left: 0;
   z-index: 7;
 }
-.sheet.freeze-first-column .cell[data-ref^="A"] {
+.sheet.freeze-first-column .cell.frozen-col-one {
   position: sticky;
   left: 44px;
   z-index: 5;
   box-shadow: 1px 0 0 var(--line);
 }
 .sheet.freeze-header.freeze-first-column .cell.corner { z-index: 12; }
-.sheet.freeze-header.freeze-first-column .cell[data-ref="A1"] { z-index: 10; }
+.sheet.freeze-header.freeze-first-column .cell.frozen-row-one-header { z-index: 11; }
+.sheet.freeze-header.freeze-first-column .cell.frozen-row-one.frozen-col-one { z-index: 10; }
 
 @media (max-width: 380px) {
   .cell-panel-actions { gap: 4px; }

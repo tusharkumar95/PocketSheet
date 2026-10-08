@@ -5,7 +5,7 @@ psViewSwitcher.innerHTML = `
   <button type="button" id="rowViewBtn">Rows</button>
   <button type="button" id="summaryViewBtn">Summary</button>`;
 
-document.querySelector(".topbar").insertAdjacentElement("afterend", psViewSwitcher);
+document.querySelector(".bottom-bar").insertAdjacentElement("afterend", psViewSwitcher);
 
 const psRowView = document.createElement("section");
 psRowView.className = "row-view";

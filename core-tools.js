@@ -27,6 +27,47 @@ saveData = function saveDataWithUndo() {
   psUpdateUndoButton();
 };
 
+function psResetSelectionUi() {
+  selectedRef = null;
+  renderSheet();
+  cellRefEl.textContent = "No cell selected";
+  cellValueEl.textContent = "Tap a cell to edit";
+  cellFormulaEl.textContent = "";
+  cellFormulaEl.classList.add("hidden");
+  editBtn.disabled = true;
+  formulaBtn.disabled = true;
+  if (typeof dataBtn !== "undefined" && dataBtn) dataBtn.disabled = true;
+  if (psFormatBtn) psFormatBtn.disabled = true;
+}
+
+function psRefreshUiAfterUndo() {
+  if (!data.cells) data.cells = {};
+  if (!data.formulas) data.formulas = {};
+  if (!data.formats) data.formats = {};
+  if (!data.rows) data.rows = DEFAULT_ROWS;
+  if (!data.title) data.title = "My Sheet";
+
+  if (typeof psSyncColumnsFromData === "function") psSyncColumnsFromData();
+
+  const title = document.getElementById("sheetTitle");
+  if (title) title.textContent = data.title;
+
+  if (typeof activeSort !== "undefined" && activeSort && !COLS.includes(activeSort.col)) activeSort = null;
+  if (typeof activeFilter !== "undefined" && activeFilter && !COLS.includes(activeFilter.col)) activeFilter = null;
+
+  const selected = parseRef(selectedRef);
+  if (selected && selected.row <= data.rows) {
+    selectCell(selectedRef);
+  } else {
+    psResetSelectionUi();
+  }
+
+  if (typeof psActiveView !== "undefined") {
+    if (psActiveView === "rows" && typeof psRenderRowView === "function") psRenderRowView();
+    if (psActiveView === "summary" && typeof psRenderSummaryView === "function") psRenderSummaryView();
+  }
+}
+
 function psUndo() {
   const previous = psUndoHistory.pop();
   if (!previous) return;
@@ -34,27 +75,12 @@ function psUndo() {
   try {
     psUndoing = true;
     data = JSON.parse(previous);
-    if (!data.cells) data.cells = {};
-    if (!data.formulas) data.formulas = {};
-    if (!data.formats) data.formats = {};
-    if (!data.rows) data.rows = DEFAULT_ROWS;
     localStorage.setItem("pocketsheet-data", JSON.stringify(data));
+    psRefreshUiAfterUndo();
+  } catch (error) {
+    console.error("PocketSheet undo failed", error);
   } finally {
     psUndoing = false;
-  }
-
-  const selected = parseRef(selectedRef);
-  if (selected && selected.row <= data.rows) {
-    selectCell(selectedRef);
-  } else {
-    selectedRef = null;
-    renderSheet();
-    cellRefEl.textContent = "No cell selected";
-    cellValueEl.textContent = "Tap a cell to edit";
-    cellFormulaEl.classList.add("hidden");
-    editBtn.disabled = true;
-    formulaBtn.disabled = true;
-    if (psFormatBtn) psFormatBtn.disabled = true;
   }
 
   psUpdateUndoButton();

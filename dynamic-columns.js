@@ -79,6 +79,10 @@ function psUpdateColumnTools() {
   psAddColumnToolBtn.disabled = COLS.length >= PS_MAX_COLUMNS;
 }
 
+function psSetDefaultFileToolsNote() {
+  psFileToolsNote.textContent = `CSV import expands automatically up to ${PS_MAX_COLUMNS} columns (A–AZ) and 1,000 rows. Formula results export as current values.`;
+}
+
 function psAddColumn() {
   if (COLS.length >= PS_MAX_COLUMNS) {
     psFileToolsNote.textContent = `PocketSheet is capped at ${PS_MAX_COLUMNS} columns for now to keep phone performance predictable.`;
@@ -93,7 +97,10 @@ function psAddColumn() {
 }
 
 if (psAddColumnToolBtn) psAddColumnToolBtn.addEventListener("click", psAddColumn);
-if (psMoreBtn) psMoreBtn.addEventListener("click", psUpdateColumnTools);
+if (psMoreBtn) psMoreBtn.addEventListener("click", () => {
+  psUpdateColumnTools();
+  psSetDefaultFileToolsNote();
+});
 
 psImportCsv = async function psImportCsvWithDynamicColumns(file) {
   if (!file) return;

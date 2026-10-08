@@ -1,0 +1,111 @@
+.cell-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+.cell-panel-actions .small-btn {
+  padding-left: 11px;
+  padding-right: 11px;
+}
+
+.cell-actions-sheet { max-height: 90dvh; overflow-y: auto; }
+.cell-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.cell-action-btn {
+  min-height: 68px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: white;
+  color: var(--text);
+  padding: 10px 11px;
+  text-align: left;
+}
+.cell-action-btn strong,
+.cell-action-btn small { display: block; }
+.cell-action-btn strong { font-size: 13px; }
+.cell-action-btn small { margin-top: 3px; color: var(--muted); font-size: 10px; line-height: 1.3; }
+.cell-action-btn:disabled { opacity: .35; }
+.cell-actions-section { margin-top: 13px; }
+.cell-actions-label {
+  margin: 0 0 7px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .09em;
+}
+.cell-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.cell-actions-row.three { grid-template-columns: repeat(3, 1fr); }
+.cell-actions-row button {
+  min-height: 43px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  color: var(--text);
+  padding: 7px 5px;
+  font-size: 11px;
+  font-weight: 750;
+}
+.cell-actions-row button.danger { color: #a33d2b; }
+.cell-actions-note { margin: 12px 1px 0; color: var(--muted); font-size: 10px; line-height: 1.35; }
+
+.freeze-control-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.freeze-toggle {
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: white;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 750;
+}
+.freeze-toggle.selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: #7e3f2d;
+}
+
+.sheet.freeze-active { overflow: visible; }
+.sheet.freeze-header .cell.header,
+.sheet.freeze-header .cell.corner {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+}
+.sheet.freeze-header .cell[data-ref$="1"] {
+  position: sticky;
+  top: 38px;
+  z-index: 6;
+  box-shadow: 0 1px 0 var(--line);
+}
+.sheet.freeze-first-column .cell.row-header,
+.sheet.freeze-first-column .cell.corner {
+  position: sticky;
+  left: 0;
+  z-index: 7;
+}
+.sheet.freeze-first-column .cell[data-ref^="A"] {
+  position: sticky;
+  left: 44px;
+  z-index: 5;
+  box-shadow: 1px 0 0 var(--line);
+}
+.sheet.freeze-header.freeze-first-column .cell.corner { z-index: 12; }
+.sheet.freeze-header.freeze-first-column .cell[data-ref="A1"] { z-index: 10; }
+
+@media (max-width: 380px) {
+  .cell-panel-actions { gap: 4px; }
+  .cell-panel-actions .small-btn { padding-left: 9px; padding-right: 9px; font-size: 12px; }
+}

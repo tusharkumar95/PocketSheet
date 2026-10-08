@@ -1,0 +1,111 @@
+.sheet-tab-wrap {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  max-width: 170px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: rgba(255,255,255,.58);
+  overflow: hidden;
+}
+.sheet-tab-wrap.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.sheet-tab-wrap .sheet-tab {
+  min-width: 0;
+  max-width: 138px;
+  min-height: 32px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0 6px 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sheet-tab-wrap.active .sheet-tab {
+  background: transparent;
+  color: #7e3f2d;
+}
+.sheet-tab-delete {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 32px;
+  border: 0;
+  border-left: 1px solid rgba(0,0,0,.06);
+  background: transparent;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1;
+}
+.sheet-tab-delete:disabled { opacity: .25; }
+.sheet-tab-delete:not(:disabled):active { background: rgba(0,0,0,.05); }
+
+.tab-delete-sheet { max-width: 520px; }
+.tab-delete-copy {
+  margin: 2px 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.tab-delete-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.tab-delete-actions button {
+  min-height: 46px;
+  border-radius: 13px;
+  font-weight: 750;
+}
+.tab-delete-cancel {
+  border: 1px solid var(--line);
+  background: white;
+  color: var(--text);
+}
+.tab-delete-confirm {
+  border: 0;
+  background: #a33d2b;
+  color: white;
+}
+
+.save-state {
+  position: fixed;
+  right: 12px;
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,.88);
+  color: var(--muted);
+  box-shadow: 0 4px 16px rgba(44,42,35,.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-size: 10px;
+  font-weight: 750;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+.save-state.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.save-state-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+@media (max-width: 380px) {
+  .sheet-tab-wrap { max-width: 145px; }
+  .sheet-tab-wrap .sheet-tab { max-width: 113px; }
+}

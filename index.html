@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="lookup.css?v=5" />
   <link rel="stylesheet" href="rowview.css?v=6" />
   <link rel="stylesheet" href="summary.css?v=7" />
+  <link rel="stylesheet" href="refine.css?v=8" />
 </head>
 <body>
   <main class="app">
@@ -21,6 +22,13 @@
       </div>
       <button class="icon-btn" id="moreBtn" aria-label="More">•••</button>
     </header>
+
+    <nav class="bottom-bar" aria-label="Sheet actions">
+      <button id="addRowBtn"><span>＋</span>Add row</button>
+      <button id="formulaBtn" disabled><span>ƒx</span>Formula</button>
+      <button id="dataBtn" disabled><span>⇅</span>Data</button>
+      <button id="undoBtn" disabled><span>↶</span>Undo</button>
+    </nav>
 
     <div class="view-banner hidden" id="viewBanner">
       <div>
@@ -50,13 +58,6 @@
       </div>
       <button id="editBtn" class="small-btn" disabled>Edit</button>
     </section>
-
-    <nav class="bottom-bar">
-      <button id="addRowBtn"><span>＋</span>Add row</button>
-      <button id="formulaBtn" disabled><span>ƒx</span>Formula</button>
-      <button id="dataBtn" disabled><span>⇅</span>Data</button>
-      <button id="undoBtn" disabled><span>↶</span>Undo</button>
-    </nav>
   </main>
 
   <div class="editor-backdrop hidden" id="editorBackdrop">
@@ -164,6 +165,7 @@
   </div>
 
   <script src="app.js?v=3"></script>
+  <script src="formula-number.js?v=8"></script>
   <script src="data.js?v=4"></script>
   <script src="lookup.js?v=5"></script>
   <script src="rowview.js?v=6"></script>

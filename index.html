@@ -12,12 +12,14 @@
   <link rel="stylesheet" href="rowview.css?v=6" />
   <link rel="stylesheet" href="summary.css?v=7" />
   <link rel="stylesheet" href="refine.css?v=8" />
+  <link rel="stylesheet" href="core-tools.css?v=9" />
 </head>
 <body>
   <main class="app">
     <header class="topbar">
-      <div>
-        <p class="eyebrow">POCKETSHEET</p>
+      <div class="sheet-heading">
+        <span class="brand-label">POCKETSHEET</span>
+        <span class="title-divider">·</span>
         <h1 id="sheetTitle">My Sheet</h1>
       </div>
       <button class="icon-btn" id="moreBtn" aria-label="More">•••</button>
@@ -27,6 +29,7 @@
       <button id="addRowBtn"><span>＋</span>Add row</button>
       <button id="formulaBtn" disabled><span>ƒx</span>Formula</button>
       <button id="dataBtn" disabled><span>⇅</span>Data</button>
+      <button id="formatBtn" disabled><span>Aa</span>Format</button>
       <button id="undoBtn" disabled><span>↶</span>Undo</button>
     </nav>
 
@@ -170,5 +173,6 @@
   <script src="lookup.js?v=5"></script>
   <script src="rowview.js?v=6"></script>
   <script src="summary.js?v=7"></script>
+  <script src="core-tools.js?v=9"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-const CACHE_NAME = "pocketsheet-shell-v5";
+const CACHE_NAME = "pocketsheet-shell-v6";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -34,7 +34,8 @@ const APP_SHELL = [
   "./polish-v2.js?v=15",
   "./privacy-storage.js?v=16",
   "./layout-v3.js?v=17",
-  "./cell-styles.js?v=18"
+  "./cell-styles.js?v=18",
+  "./jarvis-handoff.js?v=1"
 ];
 
 self.addEventListener("install", event => {

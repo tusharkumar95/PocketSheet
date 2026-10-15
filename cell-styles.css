@@ -1,0 +1,101 @@
+/* PocketSheet one-tap cell style presets */
+.cell-style-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.cell-style-card {
+  min-height: 54px;
+  padding: 9px 10px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text);
+  text-align: left;
+}
+.cell-style-card.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+.cell-style-card .style-swatch {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(70, 68, 61, .18);
+}
+.cell-style-card span:last-child {
+  min-width: 0;
+}
+.cell-style-card strong,
+.cell-style-card small {
+  display: block;
+}
+.cell-style-card strong {
+  font-size: 12px;
+}
+.cell-style-card small {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+/* Preset previews */
+.style-swatch.plain { background: #fff; }
+.style-swatch.header { background: #9a5b45; border-color: #814a37; }
+.style-swatch.section { background: #ece8df; border-bottom: 3px solid #9d988c; }
+.style-swatch.input { background: #f3f7f8; border-color: #9eb1b6; }
+.style-swatch.total { background: #eef4ec; border-top: 3px solid #71826a; }
+.style-swatch.success { background: #edf5ed; border-color: #83a081; }
+.style-swatch.warning { background: #fff3df; border-color: #d1a25c; }
+.style-swatch.note { background: #f4f1f7; border-color: #aaa0b6; }
+
+/* Actual cells */
+.data-cell.cell-style-header {
+  background: #9a5b45 !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+  border-color: #814a37 !important;
+}
+.data-cell.cell-style-section {
+  background: #ece8df !important;
+  color: #3f403a !important;
+  font-weight: 800 !important;
+  border-bottom: 2px solid #9d988c !important;
+}
+.data-cell.cell-style-input {
+  background: #f3f7f8 !important;
+  border: 1px solid #9eb1b6 !important;
+}
+.data-cell.cell-style-total {
+  background: #eef4ec !important;
+  color: #394437 !important;
+  font-weight: 800 !important;
+  border-top: 2px solid #71826a !important;
+  border-bottom: 1px solid #b7c5b2 !important;
+}
+.data-cell.cell-style-success {
+  background: #edf5ed !important;
+  color: #315d36 !important;
+  border: 1px solid #83a081 !important;
+}
+.data-cell.cell-style-warning {
+  background: #fff3df !important;
+  color: #765224 !important;
+  border: 1px solid #d1a25c !important;
+}
+.data-cell.cell-style-note {
+  background: #f4f1f7 !important;
+  color: #51495a !important;
+  border: 1px solid #aaa0b6 !important;
+}
+
+@media (max-width: 380px) {
+  .cell-style-grid { gap: 6px; }
+  .cell-style-card { padding: 8px; gap: 7px; }
+  .cell-style-card .style-swatch { flex-basis: 26px; width: 26px; height: 26px; }
+}

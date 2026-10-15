@@ -20,7 +20,7 @@ body {
   align-items: center;
   gap: 7px;
   min-height: 48px;
-  padding: max(7px, env(safe-area-inset-top)) 10px 6px;
+  padding: max(15px, calc(env(safe-area-inset-top) + 8px)) 10px 6px;
   background: #f5f4ef;
   border-bottom: 1px solid rgba(216, 215, 209, .72);
   -webkit-backdrop-filter: none !important;

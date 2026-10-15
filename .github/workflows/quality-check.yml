@@ -1,0 +1,29 @@
+name: PocketSheet quality check
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: |
+          set -e
+          for f in *.js; do
+            echo "Checking $f"
+            node --check "$f"
+          done
+      - name: Check Jarvis handoff contract
+        run: |
+          grep -q 'jarvis-handoff.js?v=1' index.html
+          grep -q 'jarvis-app-handoff-v1' jarvis-handoff.js
+          grep -q 'jarvis-handoff.js?v=1' sw.js
+          grep -q 'openEditor' jarvis-handoff.js
+          echo "PocketSheet Jarvis handoff is present and syntax-valid."

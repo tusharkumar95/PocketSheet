@@ -1,4 +1,4 @@
-const CACHE_NAME = "pocketsheet-shell-v4";
+const CACHE_NAME = "pocketsheet-shell-v5";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -17,7 +17,8 @@ const APP_SHELL = [
   "./tab-polish.css?v=14",
   "./polish-v2.css?v=15",
   "./privacy-storage.css?v=16",
-  "./layout-v3.css?v=17",
+  "./layout-v3.css?v=18",
+  "./cell-styles.css?v=18",
   "./app.js?v=3",
   "./formula-number.js?v=8",
   "./data.js?v=4",
@@ -32,7 +33,8 @@ const APP_SHELL = [
   "./tab-polish.js?v=14",
   "./polish-v2.js?v=15",
   "./privacy-storage.js?v=16",
-  "./layout-v3.js?v=17"
+  "./layout-v3.js?v=17",
+  "./cell-styles.js?v=18"
 ];
 
 self.addEventListener("install", event => {

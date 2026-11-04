@@ -1,8 +1,12 @@
-const CACHE_NAME = "pocketsheet-shell-v6";
+const CACHE_NAME = "pocketsheet-shell-v7";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
+  "./brand-icon.svg",
+  "./icon-180.png",
+  "./icon-192.png",
+  "./icon-512.png",
   "./style.css?v=3",
   "./data.css?v=4",
   "./lookup.css?v=5",

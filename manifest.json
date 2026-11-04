@@ -5,5 +5,19 @@
   "display": "standalone",
   "background_color": "#f5f4ef",
   "theme_color": "#f5f4ef",
-  "description": "A mobile-first spreadsheet."
+  "description": "A mobile-first spreadsheet.",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
 }
